@@ -50,6 +50,7 @@ export default function App() {
           city: namedetails["name:en"] ?? namedetails.name,
           lat,
           lon,
+          i: data.i + 1,
         });
       } else {
         return setSuccess(false);
