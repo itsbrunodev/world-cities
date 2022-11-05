@@ -48,12 +48,24 @@ const Cities = ({ setData }) => {
                     setData((data) => {
                       const lat = x.arr[0];
                       const lon = x.arr[1];
+                      const latLon = [Number(data.lat), Number(data.lon)];
+
+                      function is(a, b) {
+                        return (
+                          (a === b && (a !== 0 || 1 / a === 1 / b)) ||
+                          (a !== a && b !== b)
+                        );
+                      }
 
                       return {
                         city: x.name,
                         lat,
                         lon,
-                        i: x.arr === [data.lat, data.lon] ? data.i : data.i + 1,
+                        i: x.arr.every(function (u, i) {
+                          return is(u, latLon[i]);
+                        })
+                          ? data.i
+                          : data.i + 1,
                       };
                     });
                   }}
