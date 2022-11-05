@@ -28,3 +28,39 @@ a {
     background: black;
   }
 }
+
+/* custom leaflet css */
+
+div.leaflet-control-attribution {
+  background: transparent !important;
+  border-top: 1px #696969 solid;
+  border-left: 1px #696969 solid;
+  backdrop-filter: blur(2px) !important;
+  border-top-left-radius: 6px;
+  color: #d1d1d1 !important;
+}
+
+a {
+  color: #6bafc3 !important;
+}
+
+div.leaflet-control, span {
+  color: #d1d1d1 !important;
+}
+
+div.leaflet-control-zoom.leaflet-bar {
+  background: transparent;
+  border: 1px #696969 solid;
+  border-radius: 6px;
+}
+
+a.leaflet-control-zoom-in {
+  background: transparent !important;
+  backdrop-filter: blur(2px) !important;
+  border-bottom: 1px #696969 solid !important;
+}
+
+a.leaflet-control-zoom-out {
+  background: transparent !important;
+  backdrop-filter: blur(2px) !important;
+}

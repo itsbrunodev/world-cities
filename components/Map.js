@@ -12,14 +12,15 @@ const Map = ({ city = null, lat, lon }) => {
 
   const cities = () => {
     const keys = Object.keys(localStorage);
-  
+
     const array = [];
+    const types = ["ally-supports-cache", "color"];
     keys.map((key, i) => {
-      if (key !== "ally-supports-cache") {
+      if (!types.includes(key)) {
         const str = localStorage.getItem(keys[i]);
-  
+
         let arr = [];
-  
+
         const reg = str.matchAll(
           /LAT=(?<latitude>[\d-.]+)\|LON=(?<longitude>[\d-.]+)/g
         );
@@ -27,14 +28,14 @@ const Map = ({ city = null, lat, lon }) => {
           const { latitude, longitude } = result.groups;
           arr = [Number(latitude), Number(longitude)];
         }
-  
+
         array.push({
           name: key,
           arr,
         });
       }
     });
-  
+
     return array;
   };
 
@@ -58,7 +59,9 @@ const Map = ({ city = null, lat, lon }) => {
               key={i}
               center={x.arr}
               radius={100}
-              pathOptions={{ color: "white" }}
+              pathOptions={{
+                color: localStorage.getItem("color") ?? "#ffffff",
+              }}
             />
           );
         })
