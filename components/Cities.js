@@ -1,6 +1,6 @@
 import React from "react";
 
-const Cities = () => {
+const Cities = ({ setData }) => {
   const cities = () => {
     const keys = Object.keys(localStorage);
 
@@ -41,7 +41,20 @@ const Cities = () => {
           <ul className="pt-1">
             {cities().map((x, i) => {
               return (
-                <li key={i} className="text-md text-[#d1d1d1] font-thin">
+                <li
+                  key={i}
+                  className="text-md text-[#d1d1d1] font-thin hover:cursor-pointer"
+                  onClick={(e) => {
+                    setData((data) => {
+                      return {
+                        city: x.name,
+                        lat: x.arr[0],
+                        lon: x.arr[1],
+                        i: data.i + 1,
+                      };
+                    });
+                  }}
+                >
                   {x.name}
                 </li>
               );
@@ -49,7 +62,10 @@ const Cities = () => {
           </ul>
         </>
       ) : (
-        <p className="text-md text-[#d1d1d1] font-thin"> You haven&apos;t named any cities yet.</p>
+        <p className="text-md text-[#d1d1d1] font-thin">
+          {" "}
+          You haven&apos;t named any cities yet.
+        </p>
       )}
     </div>
   );

@@ -1,11 +1,9 @@
 import React from "react";
 
-import { MapContainer, TileLayer, Circle, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Circle } from "react-leaflet";
 
 import "leaflet/dist/leaflet.css";
 import "leaflet";
-import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
-/* import "leaflet-defaulticon-compatibility"; */
 
 const Map = ({ city = null, lat, lon }) => {
   const center = [Number(lat), Number(lon)];

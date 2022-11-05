@@ -37,12 +37,12 @@ const Settings = () => {
             value={color}
             type="color"
             onChange={(e) => setColor(e.target.value)}
-            className="bg-transparent"
+            className="bg-transparent cursor-pointer"
           />
         </label>
         <button
           type="submit"
-          className="w-56 bg-[#515151] hover:bg-[#636363] active:bg-[#6d6d6d] text-[#d1d1d1] py-2 rounded-md font-thin text-xl transition-all duration-100 ease-out"
+          className="w-56 bg-[#383838] hover:bg-[#474747] active:bg-[#525252] text-[#d1d1d1] py-2 rounded-md font-thin text-xl transition-all duration-100 ease-out"
         >
           Save
         </button>
@@ -54,7 +54,7 @@ const Settings = () => {
             localStorage.setItem("color", storageColor);
             return window.location.reload();
           }}
-          className="w-56 bg-[#cc4f4f] hover:bg-[#ca6060] active:bg-[#c77474] text-[#d1d1d1] py-2 rounded-md font-thin text-xl transition-all duration-100 ease-out"
+          className="w-56 bg-[#c53333] hover:bg-[#cf4848] active:bg-[#cc5a5a] text-[#d1d1d1] py-2 rounded-md font-thin text-xl transition-all duration-100 ease-out"
         >
           Clear Cities
         </button>
