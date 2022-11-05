@@ -32,23 +32,25 @@ const Cities = () => {
 
   return (
     <div className="absolute z-[9999] left-0 top-20 p-3 m-2.5 bg-transparent backdrop-blur-sm rounded-md border-[1px] border-[#696969] flex flex-col md:max-h-96 max-h-52 overflow-auto">
-      <p className="text-sm text-[#a5a5a5] font-thin pb-2 border-b-[#696969] border-b-[1px]">
-        Named a total of {cities().length}{" "}
-        {cities().length > 1 ? "cities" : "city"}.
-      </p>
-      <ul className="pt-1">
-        {cities().length !== 0 ? (
-          cities().map((x, i) => {
-            return (
-              <li key={i} className="text-md text-[#d1d1d1] font-thin">
-                {x.name}
-              </li>
-            );
-          })
-        ) : (
-          <></>
-        )}
-      </ul>
+      {cities().length !== 0 ? (
+        <>
+          <p className="text-sm text-[#a5a5a5] font-thin pb-2 border-b-[#696969] border-b-[1px]">
+            Named a total of {cities().length}{" "}
+            {cities().length > 1 ? "cities" : "city"}.
+          </p>
+          <ul className="pt-1">
+            {cities().map((x, i) => {
+              return (
+                <li key={i} className="text-md text-[#d1d1d1] font-thin">
+                  {x.name}
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      ) : (
+        <p className="text-md text-[#d1d1d1] font-thin"> You haven&apos;t found any cities yet.</p>
+      )}
     </div>
   );
 };
