@@ -49,7 +49,7 @@ const Cities = () => {
           </ul>
         </>
       ) : (
-        <p className="text-md text-[#d1d1d1] font-thin"> You haven&apos;t found any cities yet.</p>
+        <p className="text-md text-[#d1d1d1] font-thin"> You haven&apos;t named any cities yet.</p>
       )}
     </div>
   );
