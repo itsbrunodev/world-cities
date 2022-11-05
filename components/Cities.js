@@ -46,11 +46,14 @@ const Cities = ({ setData }) => {
                   className="text-md text-[#d1d1d1] font-thin hover:cursor-pointer"
                   onClick={(e) => {
                     setData((data) => {
+                      const lat = x.arr[0];
+                      const lon = x.arr[1];
+
                       return {
                         city: x.name,
-                        lat: x.arr[0],
-                        lon: x.arr[1],
-                        i: data.i + 1,
+                        lat,
+                        lon,
+                        i: x.arr === [data.lat, data.lon] ? data.i : data.i + 1,
                       };
                     });
                   }}
