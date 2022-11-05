@@ -39,41 +39,53 @@ const Cities = ({ setData }) => {
             {cities().length > 1 ? "cities" : "city"}.
           </p>
           <ul className="pt-1">
-            {cities().map((x, i) => {
-              return (
-                <li
-                  key={i}
-                  className="text-md text-[#d1d1d1] font-thin hover:cursor-pointer"
-                  onClick={(e) => {
-                    setData((data) => {
-                      const lat = x.arr[0];
-                      const lon = x.arr[1];
-                      const latLon = [Number(data.lat), Number(data.lon)];
+            {cities()
+              .sort((a, b) => {
+                const fa = a.name.toLowerCase(),
+                  fb = b.name.toLowerCase();
+                if (fa < fb) {
+                  return -1;
+                }
+                if (fa > fb) {
+                  return 1;
+                }
+                return 0;
+              })
+              .map((x, i) => {
+                return (
+                  <li
+                    key={i}
+                    className="text-md text-[#d1d1d1] font-thin hover:cursor-pointer"
+                    onClick={(e) => {
+                      setData((data) => {
+                        const lat = x.arr[0];
+                        const lon = x.arr[1];
+                        const latLon = [Number(data.lat), Number(data.lon)];
 
-                      function is(a, b) {
-                        return (
-                          (a === b && (a !== 0 || 1 / a === 1 / b)) ||
-                          (a !== a && b !== b)
-                        );
-                      }
+                        function is(a, b) {
+                          return (
+                            (a === b && (a !== 0 || 1 / a === 1 / b)) ||
+                            (a !== a && b !== b)
+                          );
+                        }
 
-                      return {
-                        city: x.name,
-                        lat,
-                        lon,
-                        i: x.arr.every(function (u, i) {
-                          return is(u, latLon[i]);
-                        })
-                          ? data.i
-                          : data.i + 1,
-                      };
-                    });
-                  }}
-                >
-                  {x.name}
-                </li>
-              );
-            })}
+                        return {
+                          city: x.name,
+                          lat,
+                          lon,
+                          i: x.arr.every(function (u, i) {
+                            return is(u, latLon[i]);
+                          })
+                            ? data.i
+                            : data.i + 1,
+                        };
+                      });
+                    }}
+                  >
+                    {x.name}
+                  </li>
+                );
+              })}
           </ul>
         </>
       ) : (
